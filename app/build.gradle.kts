@@ -28,7 +28,7 @@ val hasValidSigningProps = keystorePropsFile.exists().also { exists ->
 
 android {
     namespace = "com.andihasan.jcomposecogo"
-    compileSdk = 33
+    compileSdk = 36
     
     // disable linter
     lint {
@@ -49,7 +49,7 @@ android {
     defaultConfig {
         applicationId = "com.andihasan.jcomposecogo"
         minSdk = 26
-        targetSdk = 33 
+        targetSdk = 35
         versionCode = 1
         versionName = "1.0"
         
