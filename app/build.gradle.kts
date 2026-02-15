@@ -154,6 +154,10 @@ dependencies {
     implementation(libs.androidx.ui)
     debugImplementation(libs.androidx.ui.tooling)
     implementation(libs.androidx.core.ktx)
+    implementation(libs.navigation.compose)
+    implementation(libs.lifecycle.viewmodel.compose)
+    implementation(libs.lifecycle.runtime.compose)
+    implementation(libs.kotlinx.coroutines.android)
     // Exclude older conflicting version from transitive dependencies
     // Again this arises only when using a local maven repo. Most probably because it lacks flexibility of online one.
     // We can run some gradle:app dependency commands to compare the results for online and offline maven repo later.
