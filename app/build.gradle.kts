@@ -78,7 +78,7 @@ android {
         compose = true
     }
     composeOptions {
-        kotlinCompilerExtensionVersion = "1.5.10"
+        kotlinCompilerExtensionVersion = "1.5.14"
     }
     packaging {
         resources {
@@ -114,21 +114,6 @@ android {
         }
     }
     
-    configurations.all {
-        resolutionStrategy {
-            // Force the use of Kotlin stdlib 1.9.22 for all modules
-            force("org.jetbrains.kotlin:kotlin-stdlib:1.9.22")
-            force("org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.9.22")
-            force("org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.9.22")
-    
-            // Force specific AndroidX versions to avoid conflicts
-            force("androidx.collection:collection:1.4.2")
-            force("androidx.annotation:annotation:1.8.1")
-            force("androidx.core:core-ktx:1.8.0")
-            force("androidx.lifecycle:lifecycle-runtime-ktx:2.3.1")
-            force("androidx.collection:collection-ktx:1.4.2")
-        }
-    }
 }
 
 tasks.withType<JavaCompile> {
@@ -145,25 +130,18 @@ dependencies {
     implementation(platform(libs.androidx.compose.bom))
 
     implementation(libs.androidx.ui.tooling.preview)
-    implementation(libs.collection.ktx)
     implementation(libs.androidx.activity.compose)
     implementation(libs.androidx.material3)
-    implementation(libs.androidx.lifecycle.runtime.ktx)
-    debugImplementation(libs.androidx.ui.test.manifest)
+    implementation(libs.lifecycle.runtime.ktx)
     implementation(libs.androidx.ui.graphics)
     implementation(libs.androidx.ui)
     debugImplementation(libs.androidx.ui.tooling)
     implementation(libs.androidx.core.ktx)
     implementation(libs.navigation.compose)
+    implementation(libs.lifecycle.viewmodel.ktx)
     implementation(libs.lifecycle.viewmodel.compose)
     implementation(libs.lifecycle.runtime.compose)
     implementation(libs.kotlinx.coroutines.android)
-    // Exclude older conflicting version from transitive dependencies
-    // Again this arises only when using a local maven repo. Most probably because it lacks flexibility of online one.
-    // We can run some gradle:app dependency commands to compare the results for online and offline maven repo later.
-    // Use Kotlin stdlib 1.9.22, and exclude old jdk7 and jdk8 versions
-    implementation(libs.kotlin.stdlib) {
-      exclude(group = "org.jetbrains.kotlin", module = "kotlin-stdlib-jdk7")
-      exclude(group = "org.jetbrains.kotlin", module = "kotlin-stdlib-jdk8")
-    }
+    implementation(libs.compose.icons)
+    
 }
